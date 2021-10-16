@@ -6,6 +6,8 @@ function App() {
   return(
     <div>
       <Hello />
+      <Hello />
+      <Hello />
     </div>
   )
 }
