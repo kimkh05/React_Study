@@ -1,13 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 import Hello from './Hello';
+import Wrapper from './wrapper';
 
 function App() {
-  return(
-    <>
-      <Hello name="react" color="red" />
-      <Hello coor="pink" />
-    </>
+  return (
+    <Wrapper>
+      <Hello name="react" color="red"/>
+      <Hello color="pink"/>
+    </Wrapper>
   );
 }
 
