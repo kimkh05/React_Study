@@ -10,7 +10,7 @@ function InputSample(){
     const { name, nickname } = inputs; // 비구조화 할당을 통해 값 추출
 
     const onChange = e => {
-        const { value, name} = e.target;
+        const { value, name } = e.target;
         setInputs({
             ...inputs, // 기존의 input 객체를 복사한 뒤
             [name]: value // name 키를 가진 값을 value 로 설정
