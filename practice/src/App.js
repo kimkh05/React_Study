@@ -38,7 +38,7 @@ function App() {
   const nextId = useRef(4);
 
   const onCreate = () => {
-    const users = {
+    const user = {
       id: nextId.current,
       username,
       email
