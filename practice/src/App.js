@@ -43,7 +43,7 @@ function App() {
       username,
       email
     };
-    setUsers([...users, user]);
+    setUsers(users.concat(user));
     // 나중에 구현 할 배열에 추가하는 로직.
     // ...
     setInputs({
