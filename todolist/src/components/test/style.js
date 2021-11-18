@@ -11,3 +11,12 @@ export const Redbox = styled.div`
     width : 100px;
     height: 100px;
 `
+export const ModalBtn = styled.button`
+    background-color: blue;
+    text-decoration: none;
+    border: none;
+    padding: 20px;
+    color: white;
+    border-radius: 30px;
+    cursor: grab;
+`;
