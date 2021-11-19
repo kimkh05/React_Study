@@ -1,31 +1,38 @@
-import React, { useState } from "react";
-import styled from 'styled-components';
+import React, { useState, setState } from "react";
+import styled from "styled-components";
 
-export const Modal = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleModal = () => {
-    setIsOpen(!isOpen);
-  };
-
-  return (
-    <>
-      <ModalContainer>
-        <ModalBtn onClick={handleModal}>
-          {isOpen === false ? "Open Modal" : "Opened"}
-        </ModalBtn>
-
-        {isOpen === false ? null : (
-          <ModalBackdrop onClick={handleModal}>
-            <ModalView>
-              <div className="close-btn" onClick={handleModal}>
-                &times;
-              </div>
-              <div className="desc">HELLO WORLD!</div>
-            </ModalView>
-          </ModalBackdrop>
-        )}
-      </ModalContainer>
-    </>
-  );
+function Modal() {
+  const [settingModal, setSettingModal] = useState(false);
+ 
+const toggleModalSetting = () => {
+  if (settingModal === false) {
+    setSettingModal(true);
+  }
+  if (settingModal === true) {
+    setSettingModal(false);
+  }
 };
+  class SingleUserNav extends React.Component {  
+    constructor(props) {
+      super(props);
+      this.state = {
+        settingModal: false
+      };
+    this.toggleModalSetting = this.toggleModalSetting.bind(this);
+    };
+   
+    toggleModalSetting() {
+      const { settingModal } = this.state;
+      if(settingModal === false) {
+        this.setState {
+          settingModal: true
+        };
+      };
+      if(settingModal === true) {
+        this.setState {
+          settingModal: false
+        };
+      };
+    };
+  };
+}
