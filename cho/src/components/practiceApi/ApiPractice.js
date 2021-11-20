@@ -26,5 +26,4 @@ const ApiPractice = () => {
     </>
   );
 };
-
 export default ApiPractice;
