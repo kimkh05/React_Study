@@ -8,7 +8,7 @@ const Test = () => {
   useEffect(() => {
     axios({
       method: "get",
-      url: "http://3.36.161.36/taxi-pot/2",
+      url: "//Base URL",
     })
       .then((res) => {
         console.log(res);
