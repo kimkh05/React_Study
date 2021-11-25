@@ -1,7 +1,7 @@
 import React, { useRef, useReducer, useMemo, useCallback } from 'react';
 import UserList from './UserList';
 import CreateUser from './CreateUser';
-import useInputs from './useInputs'
+import useInputs from './useInputs';
 
 function countActiveUsers(users) {
   console.log('활성 사용자 수를 세는중...');
@@ -32,19 +32,21 @@ const initialState = {
 };
 
 function reducer(state, action) {
-  switch(action.type) {
+  switch (action.type) {
     case 'CREATE_USER':
       return {
         users: state.users.concat(action.user)
       };
     case 'TOGGLE_USER':
       return {
+        ...state,
         users: state.users.map(user =>
           user.id === action.id ? { ...user, active: !user.active } : user
         )
       };
     case 'REMOVE_USER':
       return {
+        ...state,
         users: state.users.filter(user => user.id !== action.id)
       };
     default:
@@ -52,8 +54,11 @@ function reducer(state, action) {
   }
 }
 
+// UserDispatch 라는 이름으로 내보내줍니다.
+export const UserDispatch = React.createContext(null);
+
 function App() {
-  const [{ username, email }, onChange, reset] = useInputs({
+  const [{ username, email }, onChange, onReset] = useInputs({
     username: '',
     email: ''
   });
@@ -71,36 +76,22 @@ function App() {
         email
       }
     });
-    reset();
+    onReset();
     nextId.current += 1;
-  }, [username, email, reset]);
-
-  const onToggle = useCallback(id => {
-    dispatch({
-      type: 'TOGGLE_USER',
-      id
-    });
-  }, []);
-
-  const onRemove = useCallback(id => {
-    dispatch({
-      type: 'REMOVE_USER',
-      id
-    });
-  }, []);
+  }, [username, email, onReset]);
 
   const count = useMemo(() => countActiveUsers(users), [users]);
   return (
-    <>
+    <UserDispatch.Provider value={dispatch}>
       <CreateUser
         username={username}
         email={email}
         onChange={onChange}
         onCreate={onCreate}
       />
-      <UserList users={users} onToggle={onToggle} onRemove={onRemove} />
+      <UserList users={users} />
       <div>활성사용자 수 : {count}</div>
-    </>
+    </UserDispatch.Provider>
   );
 }
 
