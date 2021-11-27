@@ -23,11 +23,11 @@ const User = React.memo(function User({ user }) {
   );
 });
 
-function UserList({ users, onRemove, onToggle }) {
+function UserList({ users }) {
   return (
     <div>
       {users.map(user => (
-        <User user={user} key={user.key} />
+        <User user={user} key={user.id} />
       ))}
     </div>
   );
