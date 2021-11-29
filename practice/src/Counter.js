@@ -1,6 +1,6 @@
-import React, { useReducer } from 'react';
+import React, { Component } from 'react';
 
-function reducer(state, action) {
+/*function reducer(state, action) {
   switch (action.type) {
     case 'INCREMENT':
       return state + 1;
@@ -29,6 +29,18 @@ function Counter() {
       <button onClick={onDecrease}>-1</button>
     </div>
   );
+}*/
+
+class Counter extends Component {
+  render(){
+    return(
+      <div>
+        <h1>0</h1>
+        <button>+1</button>
+        <button>-1</button>
+      </div>
+    );
+  }
 }
 
 export default Counter;
